@@ -10,9 +10,13 @@ import { CredentialsService } from '../services/credentials.service';
   styleUrls: ['./log-in.component.scss']
 })
 export class LogInComponent implements OnInit {
-
+  selectedRole : number;
   credentialsData : any = [];
-
+  roles : any[] = [
+    {value : '1', viewValue : 'Customer'},
+    {value : '0', viewValue:'Photographer'},
+    ]; 
+   
   credForm = this._formBuilder.group({
     username : ['',Validators.required],
     password : ['',Validators.required]
@@ -42,14 +46,11 @@ export class LogInComponent implements OnInit {
     let value = false;
     let credentials : Credentials = {
       username : this.credForm.value.username,
-      password : this.credForm.value.password
+      password : this.credForm.value.password,
+      role : this.selectedRole
     }
 
-    this.credentialsData.forEach((element : any) => {
-      if(element.username.equals(credentials.username) && element.password.equals(credentials.password)){
-        value = true;
-      }
-    });
+    
 
     console.log(credentials);
     console.log(value);

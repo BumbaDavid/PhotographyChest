@@ -18,12 +18,15 @@ public class Credentials {
 
     String password;
 
+    Role role;
+
     public Credentials() {
     }
 
-    public Credentials(String username, String password) {
+    public Credentials(String username, String password, Role role) {
         this.username = username;
         this.password = password;
+        this.role = role;
     }
 
     public Long getId() {
@@ -48,5 +51,13 @@ public class Credentials {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

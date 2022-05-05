@@ -2,11 +2,7 @@
     <div>
       <span>PhotographyChest</span>  
     </div>
-    <div>
   
-      <span><button  mat-raised-button color="warn">Home</button></span>
-  
-    </div>
   </mat-toolbar>
 
   <mat-card class="card">
@@ -26,7 +22,16 @@
                <input matInput formControlName="password" placeholder="password" required>
            </mat-form-field>
         </div>
-       </form>
+      </form>
+        <div>
+          <mat-label>Select role</mat-label>
+             <select matNativeControl [(ngModel)]="selectedRole" name="role">
+              <option *ngFor="let role of roles" [value]="role.value">
+              {{role.viewValue}}
+            </option>
+          </select>
+        </div>
+       
 
     </mat-card-content>
     <mat-card-actions>

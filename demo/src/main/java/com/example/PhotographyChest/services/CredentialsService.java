@@ -16,6 +16,7 @@ public class CredentialsService {
         Credentials c = new Credentials();
         c.setUsername(credentials.getUsername());
         c.setPassword(credentials.getPassword());
+        c.setRole(credentials.getRole());
 
         credentialsRepository.save(c);
 

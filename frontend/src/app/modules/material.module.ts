@@ -20,9 +20,11 @@ import {MatCardModule} from '@angular/material/card';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatStepperModule} from '@angular/material/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
 
 
 const MaterialComponents =[
+  MatSelectModule,
   MatButtonModule,
   MatToolbarModule,
   MatSidenavModule,
