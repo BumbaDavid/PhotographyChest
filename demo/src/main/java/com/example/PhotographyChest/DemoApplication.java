@@ -1,9 +1,7 @@
 package com.example.PhotographyChest;
 
 import com.example.PhotographyChest.models.Credentials;
-import com.example.PhotographyChest.models.Role;
 import com.example.PhotographyChest.repositories.CredentialsRepository;
-import com.example.PhotographyChest.services.CredentialsService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

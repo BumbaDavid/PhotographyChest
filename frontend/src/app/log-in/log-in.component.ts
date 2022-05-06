@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { subscribeOn } from 'rxjs';
 import { Credentials } from '../models/Credentials.mode';
 import { CredentialsService } from '../services/credentials.service';
@@ -23,7 +24,7 @@ export class LogInComponent implements OnInit {
     password : ['',Validators.required]
   })
 
-  constructor(private _formBuilder : FormBuilder, private credentialsService : CredentialsService) { }
+  constructor(private _formBuilder : FormBuilder, private credentialsService : CredentialsService, private _snackbar : MatSnackBar) { }
 
 
   ngOnInit(): void {
@@ -69,6 +70,10 @@ export class LogInComponent implements OnInit {
       }
     }
      console.log(value);
+     if(value==false)
+     {
+       this._snackbar.open("Username or password are incorrect", "Ok");
+     }
   }
 
 
@@ -85,6 +90,7 @@ export class LogInComponent implements OnInit {
     for(let i=0;i<this.credentialsData.length;i++){
       if(this.credentialsData[i].username == credentials.username &&
         this.credentialsData[i].role == credentials.role){
+          this._snackbar.open("Username already exists","Ok");
           console.log("An account with that username and role already exists");
           unique = false;
           break;
@@ -92,7 +98,9 @@ export class LogInComponent implements OnInit {
     }
 
     if(unique == true){
+      this._snackbar.open("Account successfuly created","Ok");
       this.credentialsService.saveCredentials(credentials).subscribe();
+
     }
   }
 }
