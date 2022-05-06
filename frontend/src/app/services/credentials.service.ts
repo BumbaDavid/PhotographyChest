@@ -18,4 +18,8 @@ export class CredentialsService {
       map((credentials : Credentials) => credentials)
     );
   }
+
+  saveCredentials(credentials : Credentials) : Observable<Credentials>{
+    return this.http.post<Credentials>(`${environment.signUpURL}`,credentials);
+  }
 }

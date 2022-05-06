@@ -12,18 +12,18 @@ public class Credentials {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    Long id;
+    private Long id;
 
-    String username;
+    private String username;
 
-    String password;
+    private String password;
 
-    Role role;
+    private int role;
 
     public Credentials() {
     }
 
-    public Credentials(String username, String password, Role role) {
+    public Credentials(String username, String password, int role) {
         this.username = username;
         this.password = password;
         this.role = role;
@@ -53,11 +53,11 @@ public class Credentials {
         this.password = password;
     }
 
-    public Role getRole() {
+    public int getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(int role) {
         this.role = role;
     }
 }

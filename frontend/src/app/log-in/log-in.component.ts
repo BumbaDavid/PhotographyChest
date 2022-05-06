@@ -11,6 +11,7 @@ import { CredentialsService } from '../services/credentials.service';
 })
 export class LogInComponent implements OnInit {
   selectedRole : number;
+  create = false;
   credentialsData : any = [];
   roles : any[] = [
     {value : '1', viewValue : 'Customer'},
@@ -29,8 +30,14 @@ export class LogInComponent implements OnInit {
     this.initCredentials();
   }
 
+  action(){
+    this.create = !this.create;
+  }
 
 
+  accCreated(){
+
+  }
 
   initCredentials(){
     this.credentialsService.getAccounts().subscribe(data =>{
@@ -49,12 +56,43 @@ export class LogInComponent implements OnInit {
       password : this.credForm.value.password,
       role : this.selectedRole
     }
-
     
-
     console.log(credentials);
-    console.log(value);
+
+    for(let i=0;i<this.credentialsData.length;i++){
+      if(
+        this.credentialsData[i].username == credentials.username &&
+        this.credentialsData[i].password == credentials.password &&
+        this.credentialsData[i].role == credentials.role
+      ){
+          value = true;
+      }
+    }
+     console.log(value);
   }
 
 
+  createAcc(){
+    let unique = true;
+    let credentials : Credentials = {
+      username : this.credForm.value.username,
+      password : this.credForm.value.password,
+      role : this.selectedRole
+    }
+    
+    console.log(credentials);
+
+    for(let i=0;i<this.credentialsData.length;i++){
+      if(this.credentialsData[i].username == credentials.username &&
+        this.credentialsData[i].role == credentials.role){
+          console.log("An account with that username and role already exists");
+          unique = false;
+          break;
+      }
+    }
+
+    if(unique == true){
+      this.credentialsService.saveCredentials(credentials).subscribe();
+    }
+  }
 }

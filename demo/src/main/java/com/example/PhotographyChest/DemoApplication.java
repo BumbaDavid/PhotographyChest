@@ -19,7 +19,7 @@ public class DemoApplication {
 	@Bean
 	CommandLineRunner runner(CredentialsRepository credentialsRepository){
 		return args -> {
-			credentialsRepository.save(new Credentials("admin", "admin", Role.valueOf("PHOTOGRAPHER")));
+			credentialsRepository.save(new Credentials("admin", "admin", 1));
 		};
 	}
 

@@ -21,6 +21,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import {MatStepperModule} from '@angular/material/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 const MaterialComponents =[
@@ -28,6 +29,7 @@ const MaterialComponents =[
   MatButtonModule,
   MatToolbarModule,
   MatSidenavModule,
+  MatSnackBarModule,
   MatGridListModule,
   HttpClientModule,
   NgxPaginationModule,
