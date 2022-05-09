@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -30,7 +32,7 @@ public class CredentialsController {
 
         credentialsService.addCredentials(credentials);
 
-        return new ResponseEntity<>("Added to cart", HttpStatus.CREATED);
+        return new ResponseEntity<>("Added to database", HttpStatus.CREATED);
 
 
     }
@@ -42,6 +44,20 @@ public class CredentialsController {
         cred = credentialsRepository.findAll();
 
         return cred;
+    }
+
+
+    @PostMapping("/account")
+    public void account(@RequestBody Credentials credentials){
+            activeAccount(credentials);
+    }
+
+    @GetMapping("/activeaccount")
+    public ResponseEntity<Map<String,Object>> activeAccount(Credentials credentials){
+        Map<String,Object> response = new HashMap<>();
+        response.put("activeAccount:",credentials.getId());
+
+        return new ResponseEntity<>(response , HttpStatus.OK);
     }
 
 }
