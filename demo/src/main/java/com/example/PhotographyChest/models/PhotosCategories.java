@@ -15,12 +15,14 @@ public class PhotosCategories {
     private long id;
 
     private String category;
+    private String imgURL;
 
     public PhotosCategories() {
     }
 
-    public PhotosCategories(String category) {
+    public PhotosCategories(String category, String imgURL) {
         this.category = category;
+        this.imgURL = imgURL;
     }
 
     public long getId() {
@@ -37,5 +39,13 @@ public class PhotosCategories {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getImgURL() {
+        return imgURL;
+    }
+
+    public void setImgURL(String imgURL) {
+        this.imgURL = imgURL;
     }
 }

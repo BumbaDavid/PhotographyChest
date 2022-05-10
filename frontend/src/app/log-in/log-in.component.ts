@@ -53,25 +53,26 @@ export class LogInComponent implements OnInit {
 
     let value = false;
     let credentials : Credentials = {
+      id : -1,
       username : this.credForm.value.username,
       password : this.credForm.value.password,
       role : this.selectedRole
     }
-    
-    console.log(credentials);
-
+  
     for(let i=0;i<this.credentialsData.length;i++){
       if(
         this.credentialsData[i].username == credentials.username &&
         this.credentialsData[i].password == credentials.password &&
-        this.credentialsData[i].role == credentials.role
-      ){
+        this.credentialsData[i].role == credentials.role){
+          credentials.id = this.credentialsData[i].id;
           value = true;
+          this.credentialsService.activeAccount(credentials).subscribe();
+          break;
       }
     }
+     console.log(credentials);
      console.log(value);
-     if(value==false)
-     {
+     if(value==false){
        this._snackbar.open("Username or password are incorrect", "Ok");
      }
   }

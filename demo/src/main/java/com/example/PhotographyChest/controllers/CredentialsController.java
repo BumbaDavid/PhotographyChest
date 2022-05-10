@@ -49,15 +49,18 @@ public class CredentialsController {
 
     @PostMapping("/account")
     public void account(@RequestBody Credentials credentials){
-            activeAccount(credentials);
+            Long id = credentials.getId();
+
+            activeAccount(id);
     }
 
     @GetMapping("/activeaccount")
-    public ResponseEntity<Map<String,Object>> activeAccount(Credentials credentials){
-        Map<String,Object> response = new HashMap<>();
-        response.put("activeAccount:",credentials.getId());
-
-        return new ResponseEntity<>(response , HttpStatus.OK);
+    public Iterable<Long> activeAccount(@RequestParam(required= false) Long acc){
+        Long param;
+        param = acc;
+        List<Long> accId = new ArrayList<>();
+        accId.add(param);
+       return accId;
     }
 
 }
