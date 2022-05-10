@@ -6,11 +6,14 @@ import { AppComponent } from './app.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
+import { PhotographerComponent } from './photographer/photographer.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LogInComponent
+    LogInComponent,
+    PhotographerComponent
   ],
   imports: [
     BrowserModule,
