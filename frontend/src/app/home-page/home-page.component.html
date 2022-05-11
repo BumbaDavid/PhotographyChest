@@ -5,8 +5,21 @@
   
 </mat-toolbar>
 
-<div *ngIf="categoriesData">
-  {{categoriesData[2].category}}
+<div>
+  <h1>
+    Please choose a category of photos you would like to see :
+  </h1>
 </div>
+
+<mat-grid-list cols = "3">
+  <mat-grid-tile class ="tile" *ngFor = "let tile of categoriesData">
+    <img class = "img" src ={{tile.imgURL}} alt="">
+  <mat-grid-tile-footer class="text">
+   <h1>{{tile.category}}</h1>
+  </mat-grid-tile-footer>
+
+</mat-grid-tile>
+</mat-grid-list>
+
 
   
