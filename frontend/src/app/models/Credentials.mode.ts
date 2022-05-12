@@ -3,4 +3,5 @@ export interface Credentials{
     username?: string;
     password?: string;
     role?: number;
+    portofolio?: string[];
 }

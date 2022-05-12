@@ -1,8 +1,11 @@
 package com.example.PhotographyChest.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jdk.jfr.Category;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Portofolio {
@@ -16,15 +19,24 @@ public class Portofolio {
 
     private int price;
     @ManyToOne
+    @JoinColumn(name="category_id",nullable = false)
     private PhotosCategories category;
+    @ManyToOne
+    @JoinColumn(name="credentials_id",nullable = false)
+    @JsonBackReference
+    private Credentials credentials;
+
 
     public Portofolio() {
     }
 
-    public Portofolio(String photo, PhotosCategories category, int price) {
+    public Portofolio(String photo, PhotosCategories category, int price, Credentials credentials) {
         this.photo = photo;
         this.category = category;
         this.price = price;
+        this.credentials = credentials;
+
+
     }
 
     public String getPhoto() {
@@ -49,5 +61,13 @@ public class Portofolio {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public Credentials getCredentials() {
+        return credentials;
+    }
+
+    public void setCredentials(Credentials credentials) {
+        this.credentials = credentials;
     }
 }

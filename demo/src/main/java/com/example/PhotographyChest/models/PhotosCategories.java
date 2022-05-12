@@ -2,10 +2,8 @@ package com.example.PhotographyChest.models;
 
 
 import javax.annotation.processing.Generated;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class PhotosCategories {
@@ -16,6 +14,8 @@ public class PhotosCategories {
 
     private String category;
     private String imgURL;
+    @OneToMany(mappedBy = "category")
+    private List <Portofolio> photos;
 
     public PhotosCategories() {
     }
