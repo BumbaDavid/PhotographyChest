@@ -1,7 +1,9 @@
 package com.example.PhotographyChest.controllers;
 
 
+import com.example.PhotographyChest.models.ActiveAccount;
 import com.example.PhotographyChest.models.Credentials;
+import com.example.PhotographyChest.repositories.ActiveAccountRepository;
 import com.example.PhotographyChest.repositories.CredentialsRepository;
 import com.example.PhotographyChest.services.CredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +23,13 @@ import java.util.Map;
 public class CredentialsController {
 
     @Autowired
-    private CredentialsService credentialsService;
+    CredentialsService credentialsService;
 
     @Autowired
     CredentialsRepository credentialsRepository;
 
+    @Autowired
+    ActiveAccountRepository activeAccountRepository;
 
     @PostMapping("/signup")
     public ResponseEntity postCredentials(@RequestBody Credentials credentials){
@@ -49,18 +53,14 @@ public class CredentialsController {
 
     @PostMapping("/account")
     public void account(@RequestBody Credentials credentials){
-            Long id = credentials.getId();
-
-            activeAccount(id);
+            credentialsService.addActiveAccount(credentials);
     }
 
     @GetMapping("/activeaccount")
-    public Iterable<Long> activeAccount(@RequestParam(required= false) Long acc){
-        Long param;
-        param = acc;
-        List<Long> accId = new ArrayList<>();
-        accId.add(param);
-       return accId;
+    public Iterable<ActiveAccount> activeAccount(@RequestParam(required= false) Long acc){
+      List<ActiveAccount> account = new ArrayList<>();
+      account  = activeAccountRepository.findAll();
+      return account;
     }
 
 }

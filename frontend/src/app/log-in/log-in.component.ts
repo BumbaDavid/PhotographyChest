@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { subscribeOn } from 'rxjs';
 import { Credentials } from '../models/Credentials.mode';
 import { CredentialsService } from '../services/credentials.service';
@@ -24,7 +25,7 @@ export class LogInComponent implements OnInit {
     password : ['',Validators.required]
   })
 
-  constructor(private _formBuilder : FormBuilder, private credentialsService : CredentialsService, private _snackbar : MatSnackBar) { }
+  constructor(private _formBuilder : FormBuilder, private credentialsService : CredentialsService, private _snackbar : MatSnackBar, private router : Router) { }
 
 
   ngOnInit(): void {
@@ -67,6 +68,13 @@ export class LogInComponent implements OnInit {
           credentials.id = this.credentialsData[i].id;
           value = true;
           this.credentialsService.activeAccount(credentials).subscribe();
+
+          if(this.credentialsData[i].role == 1){
+              this.router.navigate(['/home']);
+          }
+          else{
+            this.router.navigate(['/photographer']);
+          }
           break;
       }
     }

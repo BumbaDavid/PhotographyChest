@@ -31,7 +31,10 @@ public class DemoApplication {
 			categoriesRepository.save(new PhotosCategories("mountain","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-DJB112_ASG2aIR8DD6ndQiXIMxPisY8nbQ&usqp=CAU"));
 			categoriesRepository.save(new PhotosCategories("urban","https://images.unsplash.com/photo-1507090960745-b32f65d3113a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXJiYW58ZW58MHx8MHx8&w=1000&q=80"));
 			List<PhotosCategories> values = categoriesRepository.findAll();
-			credentialsRepository.save(new Credentials("admin", "admin", 1));
+
+			credentialsRepository.save(new Credentials("customer", "customer",1));
+			credentialsRepository.save(new Credentials("photographer", "photographer", 0));
+
 			List<Credentials> credentials = credentialsRepository.findAll();
 			portofolioRepository.save(new Portofolio("https://i.pinimg.com/564x/52/ac/e2/52ace226f596840df6c2ea6fedc06e1f.jpg", values.get(3) , 20,credentials.get(0)));
 			portofolioRepository.save(new Portofolio("https://i.pinimg.com/564x/c4/57/58/c457583f2e285a7722826b3be8ee1885.jpg",values.get(1) , 32,credentials.get(0)));

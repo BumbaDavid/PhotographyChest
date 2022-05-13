@@ -18,6 +18,7 @@ public class Portofolio {
 
 
     private int price;
+
     @ManyToOne
     @JoinColumn(name="category_id",nullable = false)
     private PhotosCategories category;

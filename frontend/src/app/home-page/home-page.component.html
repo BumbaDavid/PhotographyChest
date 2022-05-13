@@ -1,8 +1,11 @@
 <mat-toolbar color = "primary" class = "navbar">
     <div>
-      <span>PhotographyChest</span>  
+      <span>PhotographyChest</span>
     </div>
-  
+
+    <div>
+    <span><button routerLink='/log-in' mat-raised-button color="warn">Log out</button></span>
+  </div>
 </mat-toolbar>
 
 <div>
@@ -15,11 +18,10 @@
   <mat-grid-tile class ="tile" *ngFor = "let tile of categoriesData">
     <img class = "img" src ={{tile.imgURL}} alt="">
   <mat-grid-tile-footer class="text">
-   <h1>{{tile.category}}</h1>
+   <button class="button"><h1>{{tile.category}}</h1></button>
   </mat-grid-tile-footer>
 
 </mat-grid-tile>
 </mat-grid-list>
 
 
-  
