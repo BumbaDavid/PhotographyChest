@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {map} from "rxjs/operators";
 import { environment } from 'src/environments/environment';
-import { Credentials } from '../models/Credentials.mode';
+import { Credentials } from '../models/Credential.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,9 @@ export class CredentialsService {
 
   saveCredentials(credentials : Credentials) : Observable<Credentials>{
     return this.http.post<Credentials>(`${environment.signUpURL}`,credentials);
+  }
+
+  activeAccount(credentials : Credentials) : Observable<Credentials>{
+    return this.http.post<Credentials>(`${environment.activeAccount}`,credentials);
   }
 }

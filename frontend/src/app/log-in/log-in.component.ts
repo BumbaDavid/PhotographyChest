@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { subscribeOn } from 'rxjs';
-import { Credentials } from '../models/Credentials.mode';
+import { Credentials } from '../models/Credential.model';
 import { CredentialsService } from '../services/credentials.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class LogInComponent implements OnInit {
     password : ['',Validators.required]
   })
 
-  constructor(private _formBuilder : FormBuilder, private credentialsService : CredentialsService, private _snackbar : MatSnackBar) { }
+  constructor(private _formBuilder : FormBuilder, private credentialsService : CredentialsService, private _snackbar : MatSnackBar, private router : Router) { }
 
 
   ngOnInit(): void {
@@ -49,33 +50,46 @@ export class LogInComponent implements OnInit {
 
 
 
-  logIn(){
+  delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+
+   logIn = async () =>{
 
     let value = false;
     let credentials : Credentials = {
+      id : -1,
       username : this.credForm.value.username,
       password : this.credForm.value.password,
       role : this.selectedRole
     }
-    
-    console.log(credentials);
 
     for(let i=0;i<this.credentialsData.length;i++){
       if(
         this.credentialsData[i].username == credentials.username &&
         this.credentialsData[i].password == credentials.password &&
-        this.credentialsData[i].role == credentials.role
-      ){
+        this.credentialsData[i].role == credentials.role){
+          credentials.id = this.credentialsData[i].id;
           value = true;
+          this.credentialsService.activeAccount(credentials).subscribe();
+
+          if(this.credentialsData[i].role == 1){
+            await this.delay(500)
+
+              this.router.navigate(['/home']);
+          }
+          else{
+            await this.delay(500)
+
+            this.router.navigate(['/photographer']);
+          }
+          break;
       }
     }
+     console.log(credentials);
      console.log(value);
-     if(value==false)
-     {
+     if(value==false){
        this._snackbar.open("Username or password are incorrect", "Ok");
      }
   }
-
 
   createAcc(){
     let unique = true;

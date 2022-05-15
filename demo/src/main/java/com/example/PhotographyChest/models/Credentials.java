@@ -1,11 +1,11 @@
 package com.example.PhotographyChest.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Credentials {
@@ -20,6 +20,10 @@ public class Credentials {
 
     private int role;
 
+    @OneToMany(mappedBy = "credentials")
+    @JsonManagedReference
+    private List<Portofolio> portofolio;
+
     public Credentials() {
     }
 
@@ -27,6 +31,7 @@ public class Credentials {
         this.username = username;
         this.password = password;
         this.role = role;
+
     }
 
     public Long getId() {
@@ -59,5 +64,13 @@ public class Credentials {
 
     public void setRole(int role) {
         this.role = role;
+    }
+
+    public List<Portofolio> getPortofolio() {
+        return portofolio;
+    }
+
+    public void setPortofolio(List<Portofolio> portofolio) {
+        this.portofolio = portofolio;
     }
 }

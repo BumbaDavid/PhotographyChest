@@ -1,7 +1,9 @@
 package com.example.PhotographyChest.controllers;
 
 
+import com.example.PhotographyChest.models.ActiveAccount;
 import com.example.PhotographyChest.models.Credentials;
+import com.example.PhotographyChest.repositories.ActiveAccountRepository;
 import com.example.PhotographyChest.repositories.CredentialsRepository;
 import com.example.PhotographyChest.services.CredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -19,18 +23,20 @@ import java.util.List;
 public class CredentialsController {
 
     @Autowired
-    private CredentialsService credentialsService;
+    CredentialsService credentialsService;
 
     @Autowired
     CredentialsRepository credentialsRepository;
 
+    @Autowired
+    ActiveAccountRepository activeAccountRepository;
 
     @PostMapping("/signup")
     public ResponseEntity postCredentials(@RequestBody Credentials credentials){
 
         credentialsService.addCredentials(credentials);
 
-        return new ResponseEntity<>("Added to cart", HttpStatus.CREATED);
+        return new ResponseEntity<>("Added to database", HttpStatus.CREATED);
 
 
     }
@@ -42,6 +48,19 @@ public class CredentialsController {
         cred = credentialsRepository.findAll();
 
         return cred;
+    }
+
+
+    @PostMapping("/account")
+    public void account(@RequestBody Credentials credentials){
+            credentialsService.addActiveAccount(credentials);
+    }
+
+    @GetMapping("/activeaccount")
+    public Iterable<ActiveAccount> activeAccount(@RequestParam(required= false) Long acc){
+      List<ActiveAccount> account = new ArrayList<>();
+      account  = activeAccountRepository.findAll();
+      return account;
     }
 
 }

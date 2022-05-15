@@ -1,0 +1,47 @@
+<mat-toolbar color = "primary" class = "navbar">
+  <div>
+    <span>PhotographyChest</span>
+  </div>
+
+  <div>
+    <span><button routerLink='/log-in' mat-raised-button color="warn">Log out</button></span>
+  </div>
+  <div>
+    <span><button mat-raised-button color="warn">Upload</button></span>
+  </div>
+  <div>
+    <span><button  mat-raised-button color="warn">View history</button></span>
+  </div>
+</mat-toolbar>
+
+<div class ="table" *ngIf="dataSource">
+<mat-table [dataSource]="dataSource[0]?.activeAccount?.portofolio" matSort>
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let product; columns: displayedColumns"></mat-row>
+
+  <ng-container matColumnDef="imgURL">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Image</mat-header-cell>
+    <mat-cell *matCellDef="let product"><img class="img"  src={{product.photo}} alt=""></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="category">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Category</mat-header-cell>
+    <mat-cell *matCellDef="let product">{{product.category.category}}</mat-cell>
+  </ng-container>
+
+
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+    <mat-cell *matCellDef="let product">{{product.price}}$</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+    <mat-cell *matCellDef="let product">
+      <button mat-button >Delete</button>
+      <button mat-button >Edit</button>
+    </mat-cell>
+  </ng-container>
+
+</mat-table>
+</div>
