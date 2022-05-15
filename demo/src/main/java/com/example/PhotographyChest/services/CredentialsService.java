@@ -37,7 +37,7 @@ public class CredentialsService {
         activeAccountRepository.deleteAll();
 
         ActiveAccount account = new ActiveAccount();
-        account.setActiveAcccount(credentials);
+        account.setActiveAccount(credentials);
 
         activeAccountRepository.save(account);
     }
