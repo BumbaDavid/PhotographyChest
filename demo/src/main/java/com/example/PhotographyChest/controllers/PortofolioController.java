@@ -1,6 +1,7 @@
 package com.example.PhotographyChest.controllers;
 
 
+import com.example.PhotographyChest.models.Credentials;
 import com.example.PhotographyChest.models.Portofolio;
 
 import com.example.PhotographyChest.repositories.CredentialsRepository;
@@ -40,6 +41,17 @@ public class PortofolioController {
     }
     @GetMapping("/portofolio")
     public Iterable<Portofolio> getAll(){
-        return portofolioRepository.findAll();
+        List<Portofolio>  portofolio = new ArrayList<>();
+        portofolio = portofolioRepository.findAll();
+        return portofolio;
     }
+
+    @GetMapping("/portofolios/{id}")
+    public ResponseEntity<Map<String,Object>> getProductById(@PathVariable("id") Long id) {
+        Optional<Credentials> credentials = credentialsRepository.findById(id);
+        Map<String,Object> response = new HashMap<>();
+        response.put("credentials", credentials);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
 }

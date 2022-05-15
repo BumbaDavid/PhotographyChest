@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {map} from "rxjs/operators";
 import { environment } from 'src/environments/environment';
-import { Credentials } from '../models/Credentials.mode';
+import { ActiveAccount } from '../models/ActiveAccount.model';
+import { Credentials } from '../models/Credentials.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +27,11 @@ export class CredentialsService {
 
   activeAccount(credentials : Credentials) : Observable<Credentials>{
     return this.http.post<Credentials>(`${environment.activeAccount}`,credentials);
+  }
+
+  getActiveAccount() : Observable<ActiveAccount>{
+    return this.http.get(environment.portofolio).pipe(
+      map((data: ActiveAccount)=>data)
+    )
   }
 }

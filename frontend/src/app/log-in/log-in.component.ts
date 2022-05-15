@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { subscribeOn } from 'rxjs';
-import { Credentials } from '../models/Credentials.mode';
+import { Credentials } from '../models/Credentials.model';
 import { CredentialsService } from '../services/credentials.service';
 
 @Component({
@@ -18,8 +18,8 @@ export class LogInComponent implements OnInit {
   roles : any[] = [
     {value : '1', viewValue : 'Customer'},
     {value : '0', viewValue:'Photographer'},
-    ]; 
-   
+    ];
+
   credForm = this._formBuilder.group({
     username : ['',Validators.required],
     password : ['',Validators.required]
@@ -48,9 +48,9 @@ export class LogInComponent implements OnInit {
     })
   }
 
+  delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
-
-  logIn(){
+   logIn = async () =>{
 
     let value = false;
     let credentials : Credentials = {
@@ -59,7 +59,7 @@ export class LogInComponent implements OnInit {
       password : this.credForm.value.password,
       role : this.selectedRole
     }
-  
+
     for(let i=0;i<this.credentialsData.length;i++){
       if(
         this.credentialsData[i].username == credentials.username &&
@@ -70,9 +70,13 @@ export class LogInComponent implements OnInit {
           this.credentialsService.activeAccount(credentials).subscribe();
 
           if(this.credentialsData[i].role == 1){
+            await this.delay(500)
+
               this.router.navigate(['/home']);
           }
           else{
+            await this.delay(500)
+
             this.router.navigate(['/photographer']);
           }
           break;
@@ -93,7 +97,7 @@ export class LogInComponent implements OnInit {
       password : this.credForm.value.password,
       role : this.selectedRole
     }
-    
+
     console.log(credentials);
 
     for(let i=0;i<this.credentialsData.length;i++){

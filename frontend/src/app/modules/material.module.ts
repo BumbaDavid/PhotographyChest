@@ -22,6 +22,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {CdkTableModule} from '@angular/cdk/table';
 
 
 const MaterialComponents =[
@@ -48,6 +49,7 @@ const MaterialComponents =[
   MatBadgeModule,
   MatStepperModule,
   ReactiveFormsModule,
+  CdkTableModule
 ];
 
 @NgModule({

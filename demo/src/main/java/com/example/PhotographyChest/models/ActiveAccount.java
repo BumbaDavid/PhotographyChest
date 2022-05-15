@@ -11,13 +11,13 @@ public class ActiveAccount {
     private Long id;
 
     @OneToOne
-    private Credentials activeAcccount;
+    private Credentials activeAccount;
 
     public ActiveAccount() {
     }
 
-    public ActiveAccount(Credentials activeAcccount) {
-        this.activeAcccount = activeAcccount;
+    public ActiveAccount(Credentials activeAccount) {
+        this.activeAccount = activeAccount;
     }
 
     public Long getId() {
@@ -28,11 +28,11 @@ public class ActiveAccount {
         this.id = id;
     }
 
-    public Credentials getActiveAcccount() {
-        return activeAcccount;
+    public Credentials getActiveAccount() {
+        return activeAccount;
     }
 
-    public void setActiveAcccount(Credentials activeAcccount) {
-        this.activeAcccount = activeAcccount;
+    public void setActiveAccount(Credentials activeAccount) {
+        this.activeAccount = activeAccount;
     }
 }
