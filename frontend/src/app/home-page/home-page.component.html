@@ -2,12 +2,27 @@
     <div>
       <span>PhotographyChest</span>
     </div>
+    <div *ngIf = "showCategories == false">
+
+      <button class ="btn" mat-raised-button color="warn" (click)="showCategories = true">View Categories</button>
+
+
+        <mat-label>Sort by :</mat-label>
+        <mat-select (selectionChange)="sort($event)">
+            <mat-option value="" selected disabled hidden>S</mat-option>
+            <mat-option value="Low">Low to High(Price)</mat-option>
+            <mat-option value="High">High to Low(Price)</mat-option>
+        </mat-select>
+
+
+    </div>
 
     <div>
     <span><button routerLink='/log-in' mat-raised-button color="warn">Log out</button></span>
   </div>
 </mat-toolbar>
 
+<div *ngIf = "showCategories == true">
 <div>
   <h1>
     Please choose a category of photos you would like to see :
@@ -18,10 +33,20 @@
   <mat-grid-tile class ="tile" *ngFor = "let tile of categoriesData">
     <img class = "img" src ={{tile.imgURL}} alt="">
   <mat-grid-tile-footer class="text">
-   <button class="button"><h1>{{tile.category}}</h1></button>
+   <button class="button" (click)="displayPhotos(tile.id)"><h1>{{tile.category}}</h1></button>
   </mat-grid-tile-footer>
 
 </mat-grid-tile>
 </mat-grid-list>
+</div>
+
+<div *ngIf = "showCategories == false">
+  <mat-grid-list cols = "4">
+    <mat-grid-tile class ="tile" *ngFor = "let tile of photos">
+      <img class = "img" (click)="openDialog(tile)"src ={{tile.photo}} alt="">
+    </mat-grid-tile>
+  </mat-grid-list>
+
+</div>
 
 

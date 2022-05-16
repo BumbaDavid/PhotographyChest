@@ -21,6 +21,7 @@ public class Portofolio {
 
     @ManyToOne
     @JoinColumn(name="category_id",nullable = false)
+    @JsonBackReference
     private PhotosCategories category;
 
     @ManyToOne
