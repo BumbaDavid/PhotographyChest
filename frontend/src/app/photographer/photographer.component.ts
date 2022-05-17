@@ -35,6 +35,10 @@ export class PhotographerComponent implements OnInit {
       );
 
     }
-
+   onClick(id : number){
+     
+     this.photographerService.deletePhoto(id).subscribe();
+   
+   }
 
   }
