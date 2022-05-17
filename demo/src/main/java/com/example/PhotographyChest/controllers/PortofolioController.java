@@ -42,4 +42,9 @@ public class PortofolioController {
     public Iterable<Portofolio> getAll(){
         return portofolioRepository.findAll();
     }
+
+    @DeleteMapping("/portofolios/delete/{id}")
+    public void deletePhoto(@PathVariable("id") long itemId){
+        portofolioService.deletePhoto(itemId);
+    }
 }
