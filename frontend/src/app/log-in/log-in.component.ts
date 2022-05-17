@@ -51,10 +51,9 @@ export class LogInComponent implements OnInit {
   delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
    logIn = async () =>{
-
+    let number = -1;
     let value = false;
     let credentials : Credentials = {
-      id : -1,
       username : this.credForm.value.username,
       password : this.credForm.value.password,
       role : this.selectedRole
@@ -65,9 +64,9 @@ export class LogInComponent implements OnInit {
         this.credentialsData[i].username == credentials.username &&
         this.credentialsData[i].password == credentials.password &&
         this.credentialsData[i].role == credentials.role){
-          credentials.id = this.credentialsData[i].id;
+          number = this.credentialsData[i].id;
           value = true;
-          this.credentialsService.activeAccount(credentials).subscribe();
+          this.credentialsService.activeAccount(number).subscribe();
 
           if(this.credentialsData[i].role == 1){
             await this.delay(500)
