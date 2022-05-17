@@ -8,10 +8,10 @@
 
 
         <mat-label>Sort by :</mat-label>
-        <mat-select (selectionChange)="sort($event)">
-            <mat-option value="" selected disabled hidden>S</mat-option>
-            <mat-option value="Low">Low to High(Price)</mat-option>
-            <mat-option value="High">High to Low(Price)</mat-option>
+        <mat-select [(value)]='order'>
+            <mat-option value="" selected disabled hidden></mat-option>
+            <mat-option value="asc">Low to High(Price)</mat-option>
+            <mat-option value="desc">High to Low(Price)</mat-option>
         </mat-select>
 
 
@@ -42,7 +42,7 @@
 
 <div *ngIf = "showCategories == false">
   <mat-grid-list cols = "4">
-    <mat-grid-tile class ="tile" *ngFor = "let tile of photos">
+    <mat-grid-tile class ="tile" *ngFor = "let tile of photos | sort :['price',order]">
       <img class = "img" (click)="openDialog(tile)"src ={{tile.photo}} alt="">
     </mat-grid-tile>
   </mat-grid-list>

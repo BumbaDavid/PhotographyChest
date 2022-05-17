@@ -9,6 +9,7 @@ import { MaterialModule } from './modules/material.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PhotographerComponent } from './photographer/photographer.component';
 import { DialogComponent } from './home-page/dialog/dialog.component';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DialogComponent } from './home-page/dialog/dialog.component';
     LogInComponent,
     HomePageComponent,
     PhotographerComponent,
-    DialogComponent
+    DialogComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

@@ -17,6 +17,8 @@ export class HomePageComponent implements OnInit {
 
   photos: any = [];
 
+  order='asc';
+
   constructor(private homeService: HomeServiceService, private dialog: MatDialog) {
   }
 
