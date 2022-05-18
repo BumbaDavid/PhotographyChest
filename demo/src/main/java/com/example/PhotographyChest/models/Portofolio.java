@@ -11,7 +11,7 @@ import java.util.List;
 public class Portofolio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-
+    private long id;
 
     private String photo;
 
@@ -21,6 +21,7 @@ public class Portofolio {
 
     @ManyToOne
     @JoinColumn(name="category_id",nullable = false)
+    @JsonManagedReference
     private PhotosCategories category;
     @ManyToOne
     @JoinColumn(name="credentials_id",nullable = false)
@@ -70,5 +71,13 @@ public class Portofolio {
 
     public void setCredentials(Credentials credentials) {
         this.credentials = credentials;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

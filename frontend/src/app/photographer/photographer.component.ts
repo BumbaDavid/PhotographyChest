@@ -36,5 +36,12 @@ export class PhotographerComponent implements OnInit {
 
     }
 
+  deleteFromCart(id : number) {
+    this.photographerService.deletePortofolio(id).subscribe(() => {
+      this.initPortofolio();
+    });
+
+
+  }
 
   }

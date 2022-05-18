@@ -18,8 +18,8 @@ export class LogInComponent implements OnInit {
   roles : any[] = [
     {value : '1', viewValue : 'Customer'},
     {value : '0', viewValue:'Photographer'},
-    ]; 
-   
+    ];
+
   credForm = this._formBuilder.group({
     username : ['',Validators.required],
     password : ['',Validators.required]
@@ -53,7 +53,7 @@ export class LogInComponent implements OnInit {
   delay = (ms: number) => new Promise(res => setTimeout(res, ms));
 
    logIn = async () =>{
-
+     let numberC = -1;
     let value = false;
     let credentials : Credentials = {
       id : -1,
@@ -67,9 +67,11 @@ export class LogInComponent implements OnInit {
         this.credentialsData[i].username == credentials.username &&
         this.credentialsData[i].password == credentials.password &&
         this.credentialsData[i].role == credentials.role){
-          credentials.id = this.credentialsData[i].id;
+        credentials.id= this.credentialsData[i].id;
+         numberC = this.credentialsData[i].id;
           value = true;
-          this.credentialsService.activeAccount(credentials).subscribe();
+
+          this.credentialsService.activeAccount(numberC).subscribe();
 
           if(this.credentialsData[i].role == 1){
             await this.delay(500)
@@ -98,7 +100,7 @@ export class LogInComponent implements OnInit {
       password : this.credForm.value.password,
       role : this.selectedRole
     }
-    
+
     console.log(credentials);
 
     for(let i=0;i<this.credentialsData.length;i++){

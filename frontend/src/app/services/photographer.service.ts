@@ -19,4 +19,7 @@ export class PhotographerService {
       map((data: any)=>data)
     )
   }
+  deletePortofolio(id : number){
+    return this.http.delete(`${environment.delete}/${id}`);
+  }
 }

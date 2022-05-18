@@ -8,13 +8,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PhotographerComponent } from './photographer/photographer.component';
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LogInComponent,
     HomePageComponent,
-    PhotographerComponent
+    PhotographerComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,

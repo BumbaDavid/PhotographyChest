@@ -73,4 +73,7 @@ public class Credentials {
     public void setPortofolio(List<Portofolio> portofolio) {
         this.portofolio = portofolio;
     }
+
+
+
 }
