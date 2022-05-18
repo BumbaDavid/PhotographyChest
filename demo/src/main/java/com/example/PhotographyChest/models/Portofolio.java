@@ -13,6 +13,7 @@ public class Portofolio {
     @Id
     private long id;
 
+
     private String photo;
 
 
@@ -23,6 +24,7 @@ public class Portofolio {
     @JoinColumn(name="category_id",nullable = false)
     @JsonManagedReference
     private PhotosCategories category;
+
     @ManyToOne
     @JoinColumn(name="credentials_id",nullable = false)
     @JsonBackReference
@@ -73,11 +75,12 @@ public class Portofolio {
         this.credentials = credentials;
     }
 
-    public long getId() {
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

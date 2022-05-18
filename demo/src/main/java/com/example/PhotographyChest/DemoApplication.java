@@ -93,6 +93,7 @@ public class DemoApplication {
 			portofolioRepository.save(new Portofolio("https://i.pinimg.com/564x/8f/0a/49/8f0a493e5ab38c28066e291e35344893.jpg",values.get(2) , 23,credentials.get(3)));
 			portofolioRepository.save(new Portofolio("https://i.pinimg.com/564x/23/83/dd/2383ddd7813b08eb1211616d766d1930.jpg",values.get(2) , 13,credentials.get(0)));
 			List<Portofolio> portofolios = portofolioRepository.findAll();
+
 			for (PhotosCategories c : values) {
 				List<Portofolio> port = new ArrayList<>();
 				for(Portofolio p : portofolios){
@@ -102,7 +103,6 @@ public class DemoApplication {
 				}
 				c.setPhotos(port);
 			}
-
 
 
 		};

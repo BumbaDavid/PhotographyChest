@@ -1,6 +1,9 @@
 package com.example.PhotographyChest.controllers;
 
 
+
+import com.example.PhotographyChest.models.Credentials;
+
 import com.example.PhotographyChest.models.PhotoModel;
 import com.example.PhotographyChest.models.PhotosCategories;
 import com.example.PhotographyChest.models.Portofolio;
@@ -45,11 +48,24 @@ import java.util.*;
         return new ResponseEntity<>("Added to portofolio", HttpStatus.CREATED);
 
 
-        }
-@GetMapping("/portofolio")
-public Iterable<Portofolio> getAll(){
-        return portofolioRepository.findAll();
-        }
+
+    }
+    @GetMapping("/portofolio")
+    public Iterable<Portofolio> getAll(){
+        List<Portofolio>  portofolio = new ArrayList<>();
+        portofolio = portofolioRepository.findAll();
+        return portofolio;
+    }
+
+    @GetMapping("/portofolios/{id}")
+    public ResponseEntity<Map<String,Object>> getProductById(@PathVariable("id") Long id) {
+        Optional<Credentials> credentials = credentialsRepository.findById(id);
+        Map<String,Object> response = new HashMap<>();
+        response.put("credentials", credentials);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+}
 
 @DeleteMapping("/portofolio/delete/{id}")
 public void deleteCartItem(@PathVariable("id")long itemId){

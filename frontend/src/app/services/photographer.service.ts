@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Credentials } from '../models/Credential.model';
@@ -8,8 +9,10 @@ import { Credentials } from '../models/Credential.model';
   providedIn: 'root'
 })
 export class PhotographerService {
+  
 
   constructor(private http : HttpClient) { }
+
   getPortofolio(id:number):Observable<Credentials>{
     return this.http.get(`${environment.account}/${id}`);
   }
@@ -23,3 +26,4 @@ export class PhotographerService {
     return this.http.delete(`${environment.delete}/${id}`);
   }
 }
+
