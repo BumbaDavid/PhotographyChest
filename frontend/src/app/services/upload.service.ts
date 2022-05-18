@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable ,map} from 'rxjs';
-import {CategoryModel} from "../models/Category.model";
-import {environment} from "../../environments/environment";
-import {CategoryDataModel} from "../models/CategoryData.model";
-import {PhotoModel} from "../models/Photo.model";
+
+import { environment } from 'src/environments/environment';
+import { PhotoModel } from '../models/Photo.model';
 
 @Injectable({
   providedIn: 'root'

@@ -1,6 +1,9 @@
 package com.example.PhotographyChest.controllers;
 
 
+
+import com.example.PhotographyChest.models.Credentials;
+
 import com.example.PhotographyChest.models.PhotoModel;
 import com.example.PhotographyChest.models.PhotosCategories;
 import com.example.PhotographyChest.models.Portofolio;
@@ -20,23 +23,23 @@ import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/api")
-public class PortofolioController {
-    @Autowired
-    private PortofolioService portofolioService;
+        @RequestMapping("/api")
+        public class PortofolioController {
+        @Autowired
+        private PortofolioService portofolioService;
 
-    @Autowired
-    private CategoriesRepository categoriesRepository;
+        @Autowired
+        private CategoriesRepository categoriesRepository;
 
-    @Autowired
-    private PortofolioRepository portofolioRepository;
+        @Autowired
+        private PortofolioRepository portofolioRepository;
 
-    @Autowired
-    private CredentialsRepository credentialsRepository;
+        @Autowired
+        private CredentialsRepository credentialsRepository;
 
 
-    @PostMapping("/portofolio/savephoto")
-    public ResponseEntity postPhotos(@RequestBody PhotoModel photo){
+        @PostMapping("/portofolio/savephoto")
+        public ResponseEntity postPhotos(@RequestBody PhotoModel photo){
         Optional<PhotosCategories> cat = categoriesRepository.findById(photo.getCategory());
         PhotosCategories category = cat.get();
 
@@ -45,15 +48,28 @@ public class PortofolioController {
         return new ResponseEntity<>("Added to portofolio", HttpStatus.CREATED);
 
 
+
     }
     @GetMapping("/portofolio")
     public Iterable<Portofolio> getAll(){
-        return portofolioRepository.findAll();
+        List<Portofolio>  portofolio = new ArrayList<>();
+        portofolio = portofolioRepository.findAll();
+        return portofolio;
     }
 
-    @DeleteMapping("/portofolio/delete/{id}")
-    public void deleteCartItem(@PathVariable("id")long itemId){
-        portofolioService.deleteCartItem(itemId);
+    @GetMapping("/portofolios/{id}")
+    public ResponseEntity<Map<String,Object>> getProductById(@PathVariable("id") Long id) {
+        Optional<Credentials> credentials = credentialsRepository.findById(id);
+        Map<String,Object> response = new HashMap<>();
+        response.put("credentials", credentials);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
 }
+
+@DeleteMapping("/portofolio/delete/{id}")
+public void deleteCartItem(@PathVariable("id")long itemId){
+        portofolioService.deleteCartItem(itemId);
+        }
+
+        }

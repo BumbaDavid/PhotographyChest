@@ -1,4 +1,3 @@
-import {CategoryModel} from "./Category.model";
 
 export interface PhotoModel{
   id?: number,
@@ -6,3 +5,4 @@ export interface PhotoModel{
   price?: number,
   category?: number,
 }
+

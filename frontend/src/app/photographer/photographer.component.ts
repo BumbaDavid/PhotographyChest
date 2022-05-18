@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
+
+import { ActiveAccount } from '../models/ActiveAccount.model';
+import { Credentials } from '../models/Credentials.model';
+import { Portofolio } from '../models/Portofolio.model';
+
 import { Credentials } from '../models/Credential.model';
 import { CredentialsService } from '../services/credentials.service';
 import { PhotographerService } from '../services/photographer.service';
@@ -23,10 +28,13 @@ export class PhotographerComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.initPortofolio();
 
-
     }
+
+
+   
    initPortofolio(){
       this.photographerService.getActiveAccount().subscribe((response : any) =>{
           this.dataSource = response;
@@ -42,6 +50,6 @@ export class PhotographerComponent implements OnInit {
     });
 
 
-  }
 
+  }
   }
