@@ -1,6 +1,8 @@
 package com.example.PhotographyChest.models;
 
 
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.annotation.processing.Generated;
@@ -16,8 +18,9 @@ public class PhotosCategories {
 
     private String category;
     private String imgURL;
+  
     @OneToMany(mappedBy = "category")
-    @JsonManagedReference
+    @JsonBackReference
     private List <Portofolio> photos;
 
     public PhotosCategories() {

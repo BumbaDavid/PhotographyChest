@@ -1,5 +1,8 @@
+
 export interface PhotoModel{
   id?: number,
   photo?: string,
-  price?: number
+  price?: number,
+  category?: number,
 }
+

@@ -8,8 +8,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './modules/material.module';
 import { HomePageComponent } from './home-page/home-page.component';
 import { PhotographerComponent } from './photographer/photographer.component';
+
 import { DialogComponent } from './home-page/dialog/dialog.component';
 import { FilterPipe } from './pipes/filter.pipe';
+
+import { UploadComponent } from './upload/upload.component';
 
 @NgModule({
   declarations: [
@@ -17,8 +20,12 @@ import { FilterPipe } from './pipes/filter.pipe';
     LogInComponent,
     HomePageComponent,
     PhotographerComponent,
+
     DialogComponent,
     FilterPipe
+
+    UploadComponent
+
   ],
   imports: [
     BrowserModule,

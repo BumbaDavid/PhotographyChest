@@ -10,7 +10,9 @@ export const environment = {
   activeAccount: "http://localhost:8080/api/account",
   portofolio: "http://localhost:8080/api/activeaccount",
   categories: "http://localhost:8080/api/categories",
-  account: "http://localhost:8080/api/portofolios"
+  account: "http://localhost:8080/api/portofolios",
+  upload: "http://localhost:8080/api/portofolio/savephoto",
+  delete:"http://localhost:8080/api/portofolio/delete",
 };
 
 /*

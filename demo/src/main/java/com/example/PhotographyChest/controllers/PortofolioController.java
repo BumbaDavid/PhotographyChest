@@ -1,9 +1,14 @@
 package com.example.PhotographyChest.controllers;
 
 
+
 import com.example.PhotographyChest.models.Credentials;
+
+import com.example.PhotographyChest.models.PhotoModel;
+import com.example.PhotographyChest.models.PhotosCategories;
 import com.example.PhotographyChest.models.Portofolio;
 
+import com.example.PhotographyChest.repositories.CategoriesRepository;
 import com.example.PhotographyChest.repositories.CredentialsRepository;
 import com.example.PhotographyChest.repositories.PortofolioRepository;
 
@@ -18,24 +23,30 @@ import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/api")
-public class PortofolioController {
-    @Autowired
-    private PortofolioService portofolioService;
+        @RequestMapping("/api")
+        public class PortofolioController {
+        @Autowired
+        private PortofolioService portofolioService;
 
-    @Autowired
-    private PortofolioRepository portofolioRepository;
+        @Autowired
+        private CategoriesRepository categoriesRepository;
 
-    @Autowired
-    private CredentialsRepository credentialsRepository;
+        @Autowired
+        private PortofolioRepository portofolioRepository;
+
+        @Autowired
+        private CredentialsRepository credentialsRepository;
 
 
-    @PostMapping("/savephoto")
-    public ResponseEntity postPhotos(@RequestBody Portofolio portofolio){
+        @PostMapping("/portofolio/savephoto")
+        public ResponseEntity postPhotos(@RequestBody PhotoModel photo){
+        Optional<PhotosCategories> cat = categoriesRepository.findById(photo.getCategory());
+        PhotosCategories category = cat.get();
 
-        portofolioService.savePhoto(portofolio);
+        portofolioService.savePhoto(photo.getPhoto(), photo.getPrice(), category);
 
         return new ResponseEntity<>("Added to portofolio", HttpStatus.CREATED);
+
 
 
     }
@@ -55,3 +66,10 @@ public class PortofolioController {
     }
 
 }
+
+@DeleteMapping("/portofolio/delete/{id}")
+public void deleteCartItem(@PathVariable("id")long itemId){
+        portofolioService.deleteCartItem(itemId);
+        }
+
+        }

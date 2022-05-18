@@ -50,16 +50,18 @@ public class CredentialsController {
 
     @PostMapping("/account")
     public void account(@RequestBody long id){
-            Optional<Credentials> optCredentials = credentialsRepository.findById(id);
-            Credentials credentials = optCredentials.get();
+
+        Optional<Credentials> optCredentials = credentialsRepository.findById(id);
+        Credentials credentials = optCredentials.get();
+
         credentialsService.addActiveAccount(credentials);
     }
 
     @GetMapping("/activeaccount")
     public Iterable<ActiveAccount> activeAccount(@RequestParam(required= false) Long acc){
-      List<ActiveAccount> account = new ArrayList<>();
-      account  = activeAccountRepository.findAll();
-      return account;
+        List<ActiveAccount> account = new ArrayList<>();
+        account  = activeAccountRepository.findAll();
+        return account;
     }
 
 }
