@@ -1,26 +1,29 @@
 <mat-toolbar color = "primary" class = "navbar">
-    <div>
-      <span>PhotographyChest</span>
-    </div>
+  <div>
+    <span>PhotographyChest</span>
+  </div>
 </mat-toolbar>
+
 <form [formGroup]="uploadPhoto">
-<mat-form-field appearance="fill">
-    <mat-label>Please enter picture URL</mat-label>
-    <input matInput>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Select category</mat-label>
-    <mat-select>
-      <mat-option value="1">nature</mat-option>
-      <mat-option value="2">fish</mat-option>
-      <mat-option value="3">mountain</mat-option>
-      <mat-option value="4">urban</mat-option>
-      <mat-option value="5">animals</mat-option>
-     
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Enter price</mat-label>
-     <input matInput>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+    <mat-label>URL link for photo</mat-label>
+    <input formControlName="photo" placeholder="URL link..." matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Select category</mat-label>
+      <mat-select formControlName="category">
+        <mat-option value="2">Animals</mat-option>
+        <mat-option value="5">Urban</mat-option>
+        <mat-option value="4">Mountain</mat-option>
+        <mat-option value="3">Fish</mat-option>
+        <mat-option value="1">Nature</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Price</mat-label>
+      <input formControlName="price" placeholder="price" matInput>
+    </mat-form-field>
 </form>
+<div>
+  <button mat-button (click)="upload()">Save Photo</button>
+</div>
