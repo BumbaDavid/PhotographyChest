@@ -25,13 +25,9 @@ export class CredentialsService {
     return this.http.post<Credentials>(`${environment.signUpURL}`,credentials);
   }
 
-  activeAccount(id : number) : Observable<any>{
-    return this.http.post<any>(`${environment.activeAccount}`,id);
+  activeAccount(id : number) : Observable<any> {
+    return this.http.post<any>(`${environment.activeAccount}`, id);
 
-  getActiveAccount() : Observable<ActiveAccount>{
-    return this.http.get(environment.portofolio).pipe(
-      map((data: ActiveAccount)=>data)
-    )
   }
 
 

@@ -12,11 +12,9 @@ import {PhotoModel} from "../models/Photo.model";
 export class HomePageComponent implements OnInit {
   showCategories: boolean = true;
   categoriesData: any = [];
-
+  photosData : any =[];
   categoryId: number;
-
   photos: any = [];
-
   order='asc';
 
   constructor(private homeService: HomeServiceService, private dialog: MatDialog) {
@@ -24,6 +22,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.initCategories();
+    this.initAllPhotos();
   }
 
   initCategories() {
@@ -33,24 +32,24 @@ export class HomePageComponent implements OnInit {
     });
   }
 
+  initAllPhotos() {
+    this.homeService.getAllPhotos().subscribe(data => {
+      this.photosData = data;
+      console.log(this.photosData);
+    });
+  }
+
+
   displayPhotos(id: number) {
+    console.log(id);
     this.categoryId = id;
     this.photos = [];
+    for (let i = 0; i < this.photosData.length; i++) {
+      if (this.photosData[i].category.id == id) {
+        this.photos.push(this.photosData[i]);
 
-    for (let i = 0; i < this.categoriesData.length; i++) {
-      if (this.categoriesData[i].id == id) {
-        let j = 0;
-        while (1 == 1) {
-          if (!this.categoriesData[i].photos[j]) {
-            break;
-          }
-          this.photos.push(this.categoriesData[i].photos[j])
-          j++;
-        }
-        break;
       }
     }
-
     this.showCategories = false;
     console.log(id);
     console.log(this.categoryId);
@@ -63,29 +62,5 @@ export class HomePageComponent implements OnInit {
       width: '600px',
       data: {photo: photo, category: this.categoriesData[this.categoryId - 1].category}
     });
-  }
-
-
-  sort(event: any) {
-    console.log(event.target.value);
-    switch (event.target.value) {
-      case "Low": {
-        this.photos = this.photos.sort((low:any, high:any) => low.price - high.price);
-        break;
-      }
-
-      case "High": {
-        this.photos = this.photos.sort((low:any, high:any) => high.price - low.price);
-        break;
-      }
-
-      default: {
-        this.photos = this.photos.sort((low:any, high:any) => low.price - high.price);
-        break;
-      }
-
-    }
-    console.log(this.photos);
-    return this.photos;
   }
 }

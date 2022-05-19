@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { subscribeOn } from 'rxjs';
-import { Credentials } from '../models/Credential.model';
+import { Credentials } from '../models/Credentials.model';
 import { CredentialsService } from '../services/credentials.service';
 
 @Component({

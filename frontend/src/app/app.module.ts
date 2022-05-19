@@ -20,12 +20,9 @@ import { UploadComponent } from './upload/upload.component';
     LogInComponent,
     HomePageComponent,
     PhotographerComponent,
-
     DialogComponent,
-    FilterPipe
-
+    FilterPipe,
     UploadComponent
-
   ],
   imports: [
     BrowserModule,
