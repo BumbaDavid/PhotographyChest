@@ -13,6 +13,7 @@ import { DialogComponent } from './home-page/dialog/dialog.component';
 import { FilterPipe } from './pipes/filter.pipe';
 
 import { UploadComponent } from './upload/upload.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { UploadComponent } from './upload/upload.component';
     PhotographerComponent,
     DialogComponent,
     FilterPipe,
-    UploadComponent
+    UploadComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,

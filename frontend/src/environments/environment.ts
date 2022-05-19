@@ -14,6 +14,8 @@ export const environment = {
   photos : "http://localhost:8080/api/portofolio",
   upload: "http://localhost:8080/api/portofolio/savephoto",
   delete:"http://localhost:8080/api/portofolio/delete",
+  saveOrder : "http://localhost:8080/api/orders/save",
+  getOrder : "http://localhost:8080/api/orders/customer"
 };
 
 /*
