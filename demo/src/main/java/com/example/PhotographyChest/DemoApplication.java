@@ -94,7 +94,15 @@ public class DemoApplication {
 			portofolioRepository.save(new Portofolio("https://i.pinimg.com/564x/23/83/dd/2383ddd7813b08eb1211616d766d1930.jpg",values.get(2) , 13,credentials.get(0)));
 			List<Portofolio> portofolios = portofolioRepository.findAll();
 
-
+			for (PhotosCategories c : values) {
+				List<Portofolio> port = new ArrayList<>();
+				for(Portofolio p : portofolios){
+					if(c.getId() == p.getCategory().getId()){
+						port.add(p);
+					}
+				}
+				c.setPhotos(port);
+			}
 
 
 		};

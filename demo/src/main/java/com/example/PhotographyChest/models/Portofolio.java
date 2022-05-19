@@ -1,16 +1,17 @@
 package com.example.PhotographyChest.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import jdk.jfr.Category;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property="id")
 public class Portofolio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    private long id;
 
 
     private String photo;
@@ -21,7 +22,9 @@ public class Portofolio {
 
     @ManyToOne
     @JoinColumn(name="category_id",nullable = false)
+    @JsonManagedReference
     private PhotosCategories category;
+
     @ManyToOne
     @JoinColumn(name="credentials_id",nullable = false)
     @JsonBackReference
@@ -70,5 +73,14 @@ public class Portofolio {
 
     public void setCredentials(Credentials credentials) {
         this.credentials = credentials;
+    }
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

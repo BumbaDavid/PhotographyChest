@@ -1,7 +1,9 @@
 package com.example.PhotographyChest.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -73,4 +75,7 @@ public class Credentials {
     public void setPortofolio(List<Portofolio> portofolio) {
         this.portofolio = portofolio;
     }
+
+
+
 }

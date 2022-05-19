@@ -11,10 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @RestController
@@ -52,15 +49,19 @@ public class CredentialsController {
 
 
     @PostMapping("/account")
-    public void account(@RequestBody Credentials credentials){
-            credentialsService.addActiveAccount(credentials);
+    public void account(@RequestBody long id){
+
+        Optional<Credentials> optCredentials = credentialsRepository.findById(id);
+        Credentials credentials = optCredentials.get();
+
+        credentialsService.addActiveAccount(credentials);
     }
 
     @GetMapping("/activeaccount")
     public Iterable<ActiveAccount> activeAccount(@RequestParam(required= false) Long acc){
-      List<ActiveAccount> account = new ArrayList<>();
-      account  = activeAccountRepository.findAll();
-      return account;
+        List<ActiveAccount> account = new ArrayList<>();
+        account  = activeAccountRepository.findAll();
+        return account;
     }
 
 }
