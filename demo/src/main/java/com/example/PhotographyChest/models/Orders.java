@@ -14,19 +14,25 @@ public class Orders {
     @OneToOne
     @JsonManagedReference
     private Portofolio portofolioId;
-
     private String status;
-
     private String reason;
+
+    @OneToOne
+    private Credentials buyer;
+
+    @OneToOne
+    private Credentials owner;
 
     public Orders(){
 
     }
 
-    public Orders(Portofolio portofolioId, String status, String reason) {
+    public Orders(Portofolio portofolioId, String status, String reason, Credentials buyer, Credentials owner) {
         this.portofolioId = portofolioId;
         this.status = status;
         this.reason = reason;
+        this.buyer = buyer;
+        this.owner = owner;
     }
 
     public long getId() {
@@ -59,5 +65,21 @@ public class Orders {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public Credentials getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(Credentials buyer) {
+        this.buyer = buyer;
+    }
+
+    public Credentials getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Credentials owner) {
+        this.owner = owner;
     }
 }
