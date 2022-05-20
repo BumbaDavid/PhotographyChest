@@ -8,7 +8,7 @@ import {OrdersService} from "../services/orders.service";
 })
 export class OrdersComponent implements OnInit {
   dataSource : any =[];
-  displayedColumns:string[]=['imgURL','status','reason'];
+  displayedColumns:string[]=['imgURL','status','reason','price'];
   constructor(private ordersService : OrdersService) { }
 
   ngOnInit(): void {

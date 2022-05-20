@@ -27,12 +27,8 @@
     <mat-cell *matCellDef="let product">{{product.reason}}</mat-cell>
   </ng-container>
 
-<!--  <ng-container matColumnDef="action">-->
-<!--    <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>-->
-<!--    <mat-cell *matCellDef="let product">-->
-<!--      <button mat-button (click)="deleteFromCart(product.id)">Delete</button>-->
-<!--      <button mat-button >Edit</button>-->
-<!--    </mat-cell>-->
-<!--  </ng-container>-->
-
+  <ng-container matColumnDef="price">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>price</mat-header-cell>
+    <mat-cell *matCellDef="let product">{{product.portofolioId.price}}$</mat-cell>
+  </ng-container>
 </mat-table>
