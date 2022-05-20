@@ -12,12 +12,7 @@ public class Portofolio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private long id;
-
-
     private String photo;
-
-
-
     private int price;
 
     @ManyToOne
