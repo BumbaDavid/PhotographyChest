@@ -2,26 +2,21 @@
     <div>
       <span>PhotographyChest</span>
     </div>
-  <div>
-    <button class="btn" routerLink="/orders" mat-raised-button color="warn">Orders</button>
-  </div>
     <div *ngIf = "showCategories == false">
-
-      <button class ="btn" mat-raised-button color="warn" (click)="showCategories = true">View Categories</button>
-
-
-        <mat-label>Sort by :</mat-label>
-        <mat-select [(value)]='order'>
+        <mat-label>Sort: </mat-label>
+        <mat-select class="select-pan" [(value)]='order'>
             <mat-option value="" selected disabled hidden></mat-option>
             <mat-option value="asc">Low to High(Price)</mat-option>
             <mat-option value="desc">High to Low(Price)</mat-option>
         </mat-select>
-
+      <button mat-raised-button color="warn" (click)="showCategories = true">View Categories</button>
 
     </div>
 
-    <div>
-    <span><button routerLink='/log-in' mat-raised-button color="warn">Log out</button></span>
+    <div class="btns">
+      <button routerLink="/orders" mat-raised-button color="warn">Orders</button>
+    <button routerLink='/log-in' mat-raised-button color="warn">Log out</button>
+
   </div>
 </mat-toolbar>
 
