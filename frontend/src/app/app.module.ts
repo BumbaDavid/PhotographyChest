@@ -14,6 +14,8 @@ import { FilterPipe } from './pipes/filter.pipe';
 
 import { UploadComponent } from './upload/upload.component';
 import { OrdersComponent } from './orders/orders.component';
+import { HistoryComponent } from './history/history.component';
+import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { OrdersComponent } from './orders/orders.component';
     DialogComponent,
     FilterPipe,
     UploadComponent,
-    OrdersComponent
+    OrdersComponent,
+    HistoryComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

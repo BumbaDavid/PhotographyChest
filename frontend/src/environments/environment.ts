@@ -15,8 +15,13 @@ export const environment = {
   upload: "http://localhost:8080/api/portofolio/savephoto",
   delete:"http://localhost:8080/api/portofolio/delete",
   saveOrder : "http://localhost:8080/api/orders/save",
-  getOrder : "http://localhost:8080/api/orders/customer"
+  getOrder : "http://localhost:8080/api/orders/customer",
+  editPhoto : "http://localhost:8080/api/edit/portofolio",
+  boughtPhotos: "http://localhost:8080/api/orders/photographer",
+  acceptOrder :"http://localhost:8080/api/orders/accept"
+
 };
+
 
 /*
  * For easier debugging in development mode, you can import the following file
