@@ -27,12 +27,12 @@ public class OrdersController {
     private OrdersService ordersService;
 
     @GetMapping("/orders/customer")
-    public Iterable<Orders> getOrders() {
+    public Iterable<Orders> getOrders(){
         List<Orders> tempOrders = ordersRepository.findAll();
         List<ActiveAccount> account = activeAccountRepository.findAll();
         List<Orders> orders = new ArrayList<>();
-        for (Orders o : tempOrders) {
-            if (o.getBuyer().getId() == account.get(0).getActiveAccount().getId()) {
+        for(Orders o : tempOrders){
+            if(o.getBuyer().getId() == account.get(0).getActiveAccount().getId()){
                 orders.add(o);
             }
         }
@@ -41,12 +41,12 @@ public class OrdersController {
     }
 
     @GetMapping("/orders/photographer")
-    public Iterable<Orders> getBoughtPhotos() {
+    public Iterable<Orders> getBoughtPhotos(){
         List<Orders> orders = ordersRepository.findAll();
         List<ActiveAccount> account = activeAccountRepository.findAll();
         List<Orders> photos = new ArrayList<>();
-        for (Orders o : orders) {
-            if (o.getOwner().getId() == account.get(0).getActiveAccount().getId()) {
+        for(Orders o : orders){
+            if(o.getOwner().getId() == account.get(0).getActiveAccount().getId()){
                 photos.add(o);
             }
         }
@@ -55,15 +55,18 @@ public class OrdersController {
     }
 
     @PostMapping("/orders/save")
-    public void saveOrder(@RequestBody long orderId) {
+    public void saveOrder(@RequestBody long orderId){
 
         ordersService.saveOrder(orderId);
     }
 
-    @PostMapping("orders/decline")
-    public void declineOrder(@RequestBody DeclinedModel declined) {
+    @PostMapping("/orders/accept")
+    public void acceptOrder(@RequestBody long orderId){
+        ordersService.acceptOrder(orderId);
+    }
+
+    @PostMapping("orders/declined")
+    public void declineOrder(@RequestBody DeclinedModel declined){
         ordersService.declineOrder(declined);
-
-
     }
 }

@@ -18,7 +18,8 @@ export const environment = {
   getOrder : "http://localhost:8080/api/orders/customer",
   editPhoto : "http://localhost:8080/api/edit/portofolio",
   boughtPhotos: "http://localhost:8080/api/orders/photographer",
-  acceptOrder :"http://localhost:8080/api/orders/accept"
+  acceptOrder :"http://localhost:8080/api/orders/accept",
+  rejectOrder: "http://localhost:8080/api/orders/declined"
 
 };
 

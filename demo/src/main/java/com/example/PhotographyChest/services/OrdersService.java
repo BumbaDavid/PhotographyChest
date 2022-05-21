@@ -1,5 +1,8 @@
 package com.example.PhotographyChest.services;
+
+
 import com.example.PhotographyChest.models.ActiveAccount;
+import com.example.PhotographyChest.models.DeclinedModel;
 import com.example.PhotographyChest.models.Orders;
 import com.example.PhotographyChest.models.Portofolio;
 import com.example.PhotographyChest.repositories.ActiveAccountRepository;
@@ -7,7 +10,6 @@ import com.example.PhotographyChest.repositories.OrdersRepository;
 import com.example.PhotographyChest.repositories.PortofolioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.example.PhotographyChest.models.DeclinedModel;
 
 import java.util.List;
 import java.util.Optional;
@@ -36,6 +38,7 @@ public class OrdersService {
 
         ordersRepository.save(o);
     }
+
     public void acceptOrder(long id){
         Optional<Orders> optOrders = ordersRepository.findById(id);
         Orders order = optOrders.get();
@@ -43,6 +46,7 @@ public class OrdersService {
 
         ordersRepository.save(order);
     }
+
     public void declineOrder(DeclinedModel declined) {
         Optional<Orders> optOrders = ordersRepository.findById(declined.getOrderId());
         Orders order = optOrders.get();
@@ -51,8 +55,4 @@ public class OrdersService {
 
         ordersRepository.save(order);
     }
-
-
-
-
-    }
+}

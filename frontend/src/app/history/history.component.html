@@ -37,7 +37,7 @@
         <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
         <mat-cell *matCellDef="let product">
           <button mat-button (click)="acceptOrder(product.id)">Accept order</button>
-          <button mat-button>Reject order</button>
+          <button mat-button (click)="rejectOrder(product.id)">Reject order</button>
         </mat-cell>
       </ng-container>
     
