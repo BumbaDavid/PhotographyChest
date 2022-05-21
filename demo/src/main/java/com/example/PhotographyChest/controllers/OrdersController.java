@@ -39,9 +39,27 @@ public class OrdersController {
         return orders;
     }
 
+    @GetMapping("/orders/photographer")
+    public Iterable<Orders> getBoughtPhotos(){
+        List<Orders> orders = ordersRepository.findAll();
+        List<ActiveAccount> account = activeAccountRepository.findAll();
+        List<Orders> photos = new ArrayList<>();
+        for(Orders o : orders){
+            if(o.getOwner().getId() == account.get(0).getActiveAccount().getId()){
+                photos.add(o);
+            }
+        }
+
+        return photos;
+    }
+
     @PostMapping("/orders/save")
     public void saveOrder(@RequestBody long orderId){
 
         ordersService.saveOrder(orderId);
     }
+
+
+
+
 }
