@@ -1,9 +1,11 @@
 package com.example.PhotographyChest.services;
 
 import com.example.PhotographyChest.models.ActiveAccount;
+import com.example.PhotographyChest.models.PhotoModel;
 import com.example.PhotographyChest.models.PhotosCategories;
 import com.example.PhotographyChest.models.Portofolio;
 import com.example.PhotographyChest.repositories.ActiveAccountRepository;
+import com.example.PhotographyChest.repositories.CategoriesRepository;
 import com.example.PhotographyChest.repositories.PortofolioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,8 @@ public class PortofolioService {
     @Autowired
     ActiveAccountRepository activeAccountRepository;
 
+    @Autowired
+    CategoriesRepository categoriesRepository;
     public void savePhoto(String photo, int price , PhotosCategories category){
         Portofolio p = new Portofolio();
         p.setPhoto(photo);
@@ -39,5 +43,17 @@ public class PortofolioService {
         Portofolio cart = optionalCart.get();
 
         portofolioRepository.delete(cart);
+    }
+    public void editPhoto(PhotoModel photoM, long id){
+        Optional<PhotosCategories> cat = categoriesRepository.findById(photoM.getCategory());
+        PhotosCategories category = cat.get();
+
+        Optional<Portofolio> optPhoto = portofolioRepository.findById(id);
+        Portofolio photo = optPhoto.get();
+        photo.setPhoto(photoM.getPhoto());
+        photo.setCategory(category);
+        photo.setPrice(photoM.getPrice());
+
+        portofolioRepository.save(photo);
     }
 }
