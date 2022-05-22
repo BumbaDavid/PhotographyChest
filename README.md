@@ -7,5 +7,6 @@ For frontend, please make sure you have installed angular cli on your computer. 
 npm i @angular/cli
 
 After you have succesfully installed angular on your machine, please open a terminal in the PhotographyChest/frontend folder and run the command ng build
+
 To start the frontend application, simply run the following command in the same directory : 
 ng serve.
