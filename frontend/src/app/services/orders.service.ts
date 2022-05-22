@@ -21,4 +21,13 @@ export class OrdersService {
       map((data : any)=> data)
     )
   }
+
+  getBoughtPhotos() : Observable<any>{
+    return this.http.get<any>(environment.boughtPhotos).pipe(
+      map((data : any) => data)
+    )
+  }
+  acceptOrder(id : number){
+    return this.http.post(environment.acceptOrder,id);
+  }
 }

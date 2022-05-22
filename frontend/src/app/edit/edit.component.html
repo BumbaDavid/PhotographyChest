@@ -1,16 +1,16 @@
 <mat-toolbar color = "primary" class = "navbar">
-  <div>
-    <span>PhotographyChest</span>
-  </div>
-  <div>
-    <span><button routerLink='/photographer' mat-raised-button color="warn">Go back</button></span>
-  </div>
-</mat-toolbar>
-
-<form [formGroup]="uploadPhoto">
+    <div>
+      <span>PhotographyChest</span>
+    </div>
+    <div>
+      <span><button routerLink='/photographer' mat-raised-button color="warn">Go back</button></span>
+    </div>
+  </mat-toolbar>
+  
+  <form [formGroup]="editedPhoto">
     <mat-form-field appearance="fill">
-    <mat-label>URL link for photo</mat-label>
-    <input formControlName="photo" placeholder="URL link..." matInput>
+      <mat-label>URL link for photo</mat-label>
+      <input formControlName="photo" placeholder="URL link..." matInput>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Select category</mat-label>
@@ -26,7 +26,7 @@
       <mat-label>Price</mat-label>
       <input formControlName="price" placeholder="price" matInput>
     </mat-form-field>
-</form>
-<div>
-  <button mat-button (click)="upload()">Save Photo</button>
-</div>
+  </form>
+  <div>
+    <button mat-button (click)="edit()">Save Photo</button>
+  </div>

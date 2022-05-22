@@ -4,12 +4,13 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Credentials } from '../models/Credential.model';
+import {PhotoModel} from "../models/Photo.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PhotographerService {
-  
+
 
   constructor(private http : HttpClient) { }
 
@@ -26,4 +27,3 @@ export class PhotographerService {
     return this.http.delete(`${environment.delete}/${id}`);
   }
 }
-
