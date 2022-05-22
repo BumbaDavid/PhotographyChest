@@ -1,0 +1,14 @@
+<div class = "dtitle">
+    <h2  mat-dialog-title> Please input the reason for rejecting the order </h2>
+  </div>
+  <mat-dialog-content>
+    <form [formGroup]="rejectOrderFb">
+      <input formControlName = "reason" matInput>
+    </form>
+  
+  </mat-dialog-content>
+  <mat-dialog-actions>
+  <div>
+    <button class ="button" mat-button (click)="rejectOrder(data.id)">Reject Order</button>
+  </div>
+  </mat-dialog-actions>

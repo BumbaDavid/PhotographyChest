@@ -16,6 +16,7 @@ import { UploadComponent } from './upload/upload.component';
 import { OrdersComponent } from './orders/orders.component';
 import { HistoryComponent } from './history/history.component';
 import { EditComponent } from './edit/edit.component';
+import { RejectComponent } from './history/reject/reject.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { EditComponent } from './edit/edit.component';
     UploadComponent,
     OrdersComponent,
     HistoryComponent,
-    EditComponent
+    EditComponent,
+    RejectComponent
   ],
   imports: [
     BrowserModule,

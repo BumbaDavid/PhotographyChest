@@ -2,6 +2,7 @@ package com.example.PhotographyChest.services;
 
 
 import com.example.PhotographyChest.models.ActiveAccount;
+import com.example.PhotographyChest.models.DeclinedModel;
 import com.example.PhotographyChest.models.Orders;
 import com.example.PhotographyChest.models.Portofolio;
 import com.example.PhotographyChest.repositories.ActiveAccountRepository;
@@ -36,5 +37,22 @@ public class OrdersService {
         o.setOwner(photo.getCredentials());
 
         ordersRepository.save(o);
+    }
+
+    public void acceptOrder(long id){
+        Optional<Orders> optOrders = ordersRepository.findById(id);
+        Orders order = optOrders.get();
+        order.setStatus("Accepted(Est time : 24hrs)");
+
+        ordersRepository.save(order);
+    }
+
+    public void declineOrder(DeclinedModel declined) {
+        Optional<Orders> optOrders = ordersRepository.findById(declined.getOrderId());
+        Orders order = optOrders.get();
+        order.setStatus("Declined");
+        order.setReason(declined.getReason());
+
+        ordersRepository.save(order);
     }
 }

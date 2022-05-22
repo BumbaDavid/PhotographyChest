@@ -1,6 +1,7 @@
 package com.example.PhotographyChest.controllers;
 
 import com.example.PhotographyChest.models.ActiveAccount;
+import com.example.PhotographyChest.models.DeclinedModel;
 import com.example.PhotographyChest.models.Orders;
 import com.example.PhotographyChest.repositories.ActiveAccountRepository;
 import com.example.PhotographyChest.repositories.OrdersRepository;
@@ -31,17 +32,42 @@ public class OrdersController {
         List<ActiveAccount> account = activeAccountRepository.findAll();
         List<Orders> orders = new ArrayList<>();
         for(Orders o : tempOrders){
-            if(o.getBuyer().getId() == account.get(0).getActiveAccount().getId()){
+            if(o.getBuyer().getId() ==  account.get(0).getActiveAccount().getId()){
                 orders.add(o);
+
             }
         }
 
         return orders;
     }
 
+    @GetMapping("/orders/photographer")
+    public Iterable<Orders> getBoughtPhotos(){
+        List<Orders> orders = ordersRepository.findAll();
+        List<ActiveAccount> account = activeAccountRepository.findAll();
+        List<Orders> photos = new ArrayList<>();
+        for(Orders o : orders){
+            if(o.getOwner().getId() == account.get(0).getActiveAccount().getId()){
+                photos.add(o);
+            }
+        }
+
+        return photos;
+    }
+
     @PostMapping("/orders/save")
     public void saveOrder(@RequestBody long orderId){
 
         ordersService.saveOrder(orderId);
+    }
+
+    @PostMapping("/orders/accept")
+    public void acceptOrder(@RequestBody long orderId){
+        ordersService.acceptOrder(orderId);
+    }
+
+    @PostMapping("orders/declined")
+    public void declineOrder(@RequestBody DeclinedModel declined){
+        ordersService.declineOrder(declined);
     }
 }
