@@ -12,7 +12,7 @@ import {RejectComponent} from "./reject/reject.component";
 })
 export class HistoryComponent implements OnInit {
   dataSource : any =[];
-  displayedColumns:string[]=['imgURL','status','buyer','price','action'];
+  displayedColumns:string[]=['imgURL','status','buyer','price','reason(if declined)','action'];
   constructor(private ordersService : OrdersService, private dialog : MatDialog) { }
 
   ngOnInit(): void {

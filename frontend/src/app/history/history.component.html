@@ -27,6 +27,10 @@
         <mat-cell *matCellDef="let product">{{product.buyer.username}}</mat-cell>
       </ng-container>
     
+      <ng-container matColumnDef="reason(if declined)">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Reason(if declined)</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{product.reason}}</mat-cell>
+      </ng-container>
     
       <ng-container matColumnDef="status">
         <mat-header-cell *matHeaderCellDef mat-sort-header>Order Status</mat-header-cell>
@@ -41,5 +45,6 @@
         </mat-cell>
       </ng-container>
     
+
     
     </mat-table>

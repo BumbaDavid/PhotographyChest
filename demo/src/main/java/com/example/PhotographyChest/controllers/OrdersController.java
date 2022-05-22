@@ -32,8 +32,9 @@ public class OrdersController {
         List<ActiveAccount> account = activeAccountRepository.findAll();
         List<Orders> orders = new ArrayList<>();
         for(Orders o : tempOrders){
-            if(o.getBuyer().getId() == account.get(0).getActiveAccount().getId()){
+            if(o.getBuyer().getId() ==  account.get(0).getActiveAccount().getId()){
                 orders.add(o);
+
             }
         }
 
