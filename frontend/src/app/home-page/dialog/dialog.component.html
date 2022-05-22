@@ -11,7 +11,7 @@
       Price : {{data.photo.price}}$
     </li>
     <li>
-        <button class = "button" mat-button>Buy</button>
+        <button class = "button" mat-button (click)="orderPhoto(data.photo.id)">Buy</button>
     </li>
   </ul>
 

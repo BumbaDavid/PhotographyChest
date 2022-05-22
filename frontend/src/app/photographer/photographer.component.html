@@ -10,7 +10,7 @@
     <span><button routerLink='/upload' mat-raised-button color="warn">Upload</button></span>
   </div>
   <div>
-    <span><button  mat-raised-button color="warn">View history</button></span>
+    <span><button  mat-raised-button routerLink='/history' color="warn">View history</button></span>
   </div>
 </mat-toolbar>
 
@@ -40,10 +40,9 @@
     <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
     <mat-cell *matCellDef="let product">
       <button mat-button (click)="deleteFromCart(product.id)">Delete</button>
-      <button mat-button >Edit</button>
+      <button mat-button (click)="editPhoto(product.id)">Edit</button>
     </mat-cell>
   </ng-container>
 
 </mat-table>
 </div>
-

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Credentials } from '../models/Credentials.model';
 import { CredentialsService } from '../services/credentials.service';
 import { PhotographerService } from '../services/photographer.service';
@@ -17,7 +17,7 @@ export class PhotographerComponent implements OnInit {
 
   displayedColumns : string[] = ['imgURL','category','price','action'];
   activeAcc: any =[];
-  constructor(private route:ActivatedRoute,private photographerService:PhotographerService, private credentialsService : CredentialsService) {
+  constructor(private router:Router,private photographerService:PhotographerService, private credentialsService : CredentialsService) {
   }
 
   ngOnInit(): void {
@@ -39,8 +39,8 @@ export class PhotographerComponent implements OnInit {
     this.photographerService.deletePortofolio(id).subscribe(() => {
       this.initPortofolio();
     });
-
-
-
+  }
+  editPhoto(id : number){
+    this.router.navigate(['edit',id]);
   }
   }

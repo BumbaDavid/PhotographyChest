@@ -1,0 +1,50 @@
+<mat-toolbar color = "primary" class = "navbar">
+    <div>
+      <span>PhotographyChest</span>
+    </div>
+    
+    <div>
+      <span><button routerLink='/log-in' mat-raised-button color="warn">Log out</button></span>
+    </div>
+    </mat-toolbar>
+    
+    <mat-table [dataSource]="dataSource" matSort>
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let product; columns: displayedColumns"></mat-row>
+    
+      <ng-container matColumnDef="imgURL">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Image</mat-header-cell>
+        <mat-cell *matCellDef="let product"><img class="img"  src={{product.portofolioId.photo}} alt=""></mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="price">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Price</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{product.portofolioId.price}}$</mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="buyer">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Client</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{product.buyer.username}}</mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="reason(if declined)">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Reason(if declined)</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{product.reason}}</mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Order Status</mat-header-cell>
+        <mat-cell *matCellDef="let product">{{product.status}}</mat-cell>
+      </ng-container>
+    
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Action</mat-header-cell>
+        <mat-cell *matCellDef="let product">
+          <button mat-button (click)="acceptOrder(product.id)">Accept order</button>
+          <button mat-button (click)="rejectOrder(product.id)">Reject order</button>
+        </mat-cell>
+      </ng-container>
+    
+
+    
+    </mat-table>
