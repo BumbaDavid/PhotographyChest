@@ -1,6 +1,7 @@
 .navbar{
-    margin-bottom: 10px;
-  }
+  display: grid;
+  grid-template-columns: auto 100px 100px;
+}
   span {
     padding-right: 1rem;
   }

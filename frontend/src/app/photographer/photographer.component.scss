@@ -8,3 +8,8 @@ span {
     margin-bottom: 15px;
     transition: 0.3s ease-in-out;
 }
+
+.navbar{
+    display: grid;
+    grid-template-columns: auto 100px 100px 100px;
+}

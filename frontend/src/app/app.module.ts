@@ -17,6 +17,8 @@ import { OrdersComponent } from './orders/orders.component';
 import { HistoryComponent } from './history/history.component';
 import { EditComponent } from './edit/edit.component';
 import { RejectComponent } from './history/reject/reject.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { RejectComponent } from './history/reject/reject.component';
     OrdersComponent,
     HistoryComponent,
     EditComponent,
-    RejectComponent
+    RejectComponent,
+    AboutComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

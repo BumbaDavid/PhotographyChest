@@ -5,14 +5,12 @@
   <img class = "img" src = {{data.photo.photo}}>
 </mat-dialog-content>
 <mat-dialog-actions>
-
-  <ul class="stack">
-    <li class = "price">
-      Price : {{data.photo.price}}$
-    </li>
-    <li>
-        <button class = "button" mat-button (click)="orderPhoto(data.photo.id)">Buy</button>
-    </li>
-  </ul>
-
+  <div class="actions">
+    <div>
+     <h1>Price : {{data.photo.price}}$</h1>
+    </div>
+    <div>
+      <button mat-button class="button" (click)="orderPhoto(data.photo.id)">Place Order</button>
+    </div>
+  </div>
 </mat-dialog-actions>

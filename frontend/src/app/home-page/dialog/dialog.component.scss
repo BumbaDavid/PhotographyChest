@@ -17,15 +17,13 @@
   align-items: center;
 
 }
-.stack{
-  list-style:none;
-  padding:0;
-  margin:0;
+.actions{
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns:400px 50px;
 }
+
 .button{
-  margin-top:30px;
-  margin-left: 200px;
-  padding: 12px 50px;
   background-color: rgb(28, 177, 28);
   color: white;
 }
